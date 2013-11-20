@@ -1,0 +1,23 @@
+{
+  "name": "anylint",
+  "version": "0.0.1",
+  "description": "Validate (set of) files over custom rules",
+  "keywords": [
+    "lint",
+    "validate",
+    "jshint",
+    "jslint",
+    "ecmascript",
+    "esprima"
+  ],
+  "author": {
+    "name": "Denis Wolf",
+    "email": "dear.mr.dw@gmail.com"
+  },
+  "licenses": {
+    "type": "MIT"
+  },
+  "devDependencies": {
+    "esprima": "~1.0.4"
+  }
+}
