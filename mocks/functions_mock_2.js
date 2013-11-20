@@ -1,0 +1,1 @@
+papaObject.childDefine('anotherMockName',function mock(){});
