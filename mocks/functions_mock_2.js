@@ -1,7 +1,9 @@
-//papaObject.childDefine('anotherMockName',function mock(){});
-//define('someName',function(){
-//
-//});
-//la.la.define('someName',function(){
-//
-//});
+papaObject.childDefine('anotherMockName',function mock(){});
+define('someName',function(){
+
+});
+la.la.define('someName',function(){
+
+});
+
+newClass('lala');
