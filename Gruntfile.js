@@ -13,16 +13,14 @@ module.exports = function(grunt) {
 	// Project configuration.
 	grunt.initConfig({
 		anylint: {
-			src: [
-				'mocks/**/*.js'
-			],
-//			individualFiles: {
-//				files: [
-//					{src: 'Gruntfile.js'},
-//					{src: 'tasks/**/*.js'},
-//					{src: '<%= nodeunit.tests %>'},
-//				]
-//			},
+            src: [
+                'mocks/**/*.js'
+            ],
+            options:{
+                validations: [
+                    'lib/validators/no-define-with-the-same-name.js'
+                ]
+            },
 			withReporterShouldFail: {
 				options: {
 					reporter: 'checkstyle',

@@ -2,8 +2,7 @@
 
 module.exports = function(grunt) {
 	var anylint = require('../lib'),
-		path = require('path'),
-		validateDefine = require('../lib/validators/no-define-with-the-same-name');
+		path = require('path');
 
 	grunt.registerMultiTask('anylint', 'Validate files with Anylint.', function() {
 		var done = this.async();
@@ -11,13 +10,16 @@ module.exports = function(grunt) {
 		// Merge task-specific and/or target-specific options with these defaults.
 		var options = this.options({
 			force: false,
-			reporterOutput: null
+			reporterOutput: null,
+            validations: [
+                'lib/validators/**/*.js'
+            ]
 		});
 
 		// log (verbose) options before hooking in the reporter
 		grunt.verbose.writeflags(options, 'Anylint options');
 
-		// Report JSHint errors but dont fail the task
+		// Report errors but don't fail the task
 		var force = options.force;
 		delete options.force;
 
@@ -36,7 +38,14 @@ module.exports = function(grunt) {
 			});
 		}
 
-		var validations = [validateDefine];
+        var validations = [];
+
+        grunt.file.expand(options.validations).map(function(validationDefenition){
+            var modulePath = path.join('..',validationDefenition);
+            var module = require(modulePath);
+           validations.push(module);
+        });
+
 		anylint(this.filesSrc, 'function', validations, function(errors){
 			var failed = 0;
 			if (errors.length > 0) {
