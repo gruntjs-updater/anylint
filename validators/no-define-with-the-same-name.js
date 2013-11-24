@@ -18,23 +18,21 @@ module.exports = function noDefineWithTheSameName(data, anylint){
 		var allDefinitionsByFile = {};
 		listOfExpressions.forEach(
 			function(token){
-				var filePath = token.filePath,
-					defineExpressions = token.expressions.filter(function(exp){
-						return exp.name === keyWord;
-					});
+				var filePath = token.filePath;
 
-				defineExpressions.forEach(function(expression){
-					if(expression.name !== keyWord){
-						return;
-					}
-					var definition = expression.argument;
-					if (allDefinitionsByFile[definition]) {
-						errors.push(definition + ' - defined both in ' +
-							allDefinitionsByFile[definition] + ' and ' + filePath);
-					} else {
-						allDefinitionsByFile[definition] = filePath;
-					}
-				});
+				token.expressions
+					.filter(function(exp){
+						return exp.name === keyWord;
+					})
+					.forEach(function(expression) {
+						var arg = expression.argument;
+						if (allDefinitionsByFile[arg]) {
+							errors.push(arg + ' - defined both in ' +
+								allDefinitionsByFile[arg] + ' and ' + filePath);
+						} else {
+							allDefinitionsByFile[arg] = filePath;
+						}
+					});
 			}
 		);
 	}
