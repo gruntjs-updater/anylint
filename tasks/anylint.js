@@ -38,13 +38,10 @@ module.exports = function(grunt) {
 			});
 		}
 
-        var validations = [];
-
-        grunt.file.expand(options.validations).map(function(validationDefenition){
-            var modulePath = path.resolve(validationDefenition);
-            var module = require(modulePath);
-           validations.push(module);
-        });
+        var validations = grunt.file.expand(options.validations).map(function(validationPath){
+			var absolutePath = path.resolve(validationPath);
+			return require(absolutePath);
+		});
 
 		anylint(this.filesSrc, validations, function(errors){
 			var failed = 0;
