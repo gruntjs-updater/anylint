@@ -20,7 +20,6 @@
   "devDependencies": {
     "esprima": "~1.0.4",
     "lodash": "~2.3.0",
-    "filewalker": "~0.1.2",
     "grunt": "~0.4.2",
     "grunt-contrib-internal": "~0.4.6"
   }
