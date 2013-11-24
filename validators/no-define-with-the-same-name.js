@@ -1,4 +1,3 @@
-var _ = require('lodash');
 module.exports = function noDefineWithTheSameName(data, anylint){
 	var defineKeywords = ['define','newClass'];
 	var errors = [];
@@ -13,28 +12,32 @@ module.exports = function noDefineWithTheSameName(data, anylint){
 		};
 	});
 
-	defineKeywords.forEach(function(keyWord){
+	defineKeywords.forEach(validateByKeyWord);
+
+	function validateByKeyWord (keyWord){
 		var allDefinitionsByFile = {};
+		listOfExpressions.forEach(
+			function(token){
+				var filePath = token.filePath,
+					defineExpressions = token.expressions.filter(function(exp){
+						return exp.name === keyWord;
+					});
 
-		_.forEach(listOfExpressions, function(token){
-			var filePath = token.filePath,
-				defineExperssions = _.filter(token.expressions, function(exp){
-					return exp.name === keyWord;
-				});
-
-			_.forEach(defineExperssions, function(expression){
-				if(expression.name === keyWord){
+				defineExpressions.forEach(function(expression){
+					if(expression.name !== keyWord){
+						return;
+					}
 					var definition = expression.argument;
-					if(allDefinitionsByFile[definition]){
-						errors.push('double definition of '+definition+' - both in ' +
-							allDefinitionsByFile[definition]+' and ' + filePath);
-					}else{
+					if (allDefinitionsByFile[definition]) {
+						errors.push(definition + ' - defined both in ' +
+							allDefinitionsByFile[definition] + ' and ' + filePath);
+					} else {
 						allDefinitionsByFile[definition] = filePath;
 					}
-				}
-			});
-		});
+				});
+			}
+		);
+	}
 
-	});
 	return errors;
 };
