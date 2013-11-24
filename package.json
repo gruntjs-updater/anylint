@@ -1,6 +1,6 @@
 {
     "name": "grunt-anylint",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Validate (set of) files over custom rules",
     "keywords": [
         "gruntplugin",
