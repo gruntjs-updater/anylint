@@ -1,26 +1,44 @@
 {
-  "name": "anylint",
-  "version": "0.0.1",
-  "description": "Validate (set of) files over custom rules",
-  "keywords": [
-    "lint",
-    "validate",
-    "jshint",
-    "jslint",
-    "ecmascript",
-    "esprima"
-  ],
-  "author": {
-    "name": "Denis Wolf",
-    "email": "dear.mr.dw@gmail.com"
-  },
-  "licenses": {
-    "type": "MIT"
-  },
-  "devDependencies": {
-    "esprima": "~1.0.4",
-    "lodash": "~2.3.0",
-    "grunt": "~0.4.2",
-    "grunt-contrib-internal": "~0.4.6"
-  }
+    "name": "grunt-anylint",
+    "version": "0.0.1",
+    "description": "Validate (set of) files over custom rules",
+    "keywords": [
+        "gruntplugin",
+        "anylint",
+        "lint",
+        "validate",
+        "eslint",
+        "jshint",
+        "jslint",
+        "ecmascript",
+        "esprima"
+    ],
+    "author": {
+        "name": "Denis Wolf",
+        "email": "dear.mr.dw@gmail.com"
+    },
+    "homepage": "https://github.com/deniswolf/anylint",
+    "bugs": "https://github.com/deniswolf/anylint/issues",
+    "licenses": {
+        "type": "MIT"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/deniswolf/anylint.git"
+    },
+    "dependencies": {
+        "esprima": "~1.0.4",
+        "lodash": "~2.3.0"
+    },
+    "peerDependencies":{
+        "grunt": "0.4.x"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.2",
+        "grunt-contrib-internal": "~0.4.6"
+    },
+    "files":[
+        "tasks/*",
+        "lib/**"
+    ]
 }
