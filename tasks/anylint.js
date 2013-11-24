@@ -46,7 +46,7 @@ module.exports = function(grunt) {
            validations.push(module);
         });
 
-		anylint(this.filesSrc, 'function', validations, function(errors){
+		anylint(this.filesSrc, validations, function(errors){
 			var failed = 0;
 			if (errors && errors.length > 0) {
 				errors.forEach(function(error){

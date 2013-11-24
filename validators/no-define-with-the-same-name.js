@@ -1,10 +1,19 @@
 var _ = require('lodash');
-module.exports = function noDefineWithTheSameName(listOfExpressions){
+module.exports = function noDefineWithTheSameName(data, anylint){
 	var defineKeywords = ['define','newClass'];
 	var errors = [];
+	var listOfExpressions = data.map(function(dataNode){
+		return {
+			filePath: dataNode.filePath,
+			expressions: anylint.datagrabbers.definitions(
+				dataNode.ast,
+				anylint.filters.function,
+				anylint.extractors.function
+			)
+		};
+	});
 
-	_.forEach(defineKeywords, function(keyWord){
-
+	defineKeywords.forEach(function(keyWord){
 		var allDefinitionsByFile = {};
 
 		_.forEach(listOfExpressions, function(token){
@@ -25,7 +34,7 @@ module.exports = function noDefineWithTheSameName(listOfExpressions){
 				}
 			});
 		});
-	});
 
+	});
 	return errors;
 };
