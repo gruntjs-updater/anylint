@@ -18,7 +18,7 @@ module.exports = function(grunt) {
             ],
             options:{
                 validations: [
-                    'lib/validators/no-define-with-the-same-name.js'
+                    'validators/no-define-with-the-same-name.js'
                 ]
             },
 			withReporterShouldFail: {

@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 			force: false,
 			reporterOutput: null,
             validations: [
-                'lib/validators/**/*.js'
+                'validators/**/*.js'
             ]
 		});
 
