@@ -37,7 +37,7 @@ module.exports = function(grunt) {
 		}
 
 		var validations = [validateDefine];
-		anylint(this.filesSrc, /.js$/, 'function', validations, function(errors){
+		anylint(this.filesSrc, 'function', validations, function(errors){
 			var failed = 0;
 			if (errors.length > 0) {
 				errors.forEach(function(error){
