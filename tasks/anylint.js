@@ -41,14 +41,14 @@ module.exports = function(grunt) {
         var validations = [];
 
         grunt.file.expand(options.validations).map(function(validationDefenition){
-            var modulePath = path.join('..',validationDefenition);
+            var modulePath = path.resolve(validationDefenition);
             var module = require(modulePath);
            validations.push(module);
         });
 
 		anylint(this.filesSrc, 'function', validations, function(errors){
 			var failed = 0;
-			if (errors.length > 0) {
+			if (errors && errors.length > 0) {
 				errors.forEach(function(error){
 					grunt.log.error(error);
 				});
