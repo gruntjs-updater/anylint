@@ -1,11 +1,3 @@
-/*
- * grunt-contrib-jshint
- * http://gruntjs.com/
- *
- * Copyright (c) 2013 "Cowboy" Ben Alman, contributors
- * Licensed under the MIT license.
- */
-
 'use strict';
 
 module.exports = function(grunt) {
