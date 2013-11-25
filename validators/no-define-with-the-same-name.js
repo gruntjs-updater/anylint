@@ -4,10 +4,10 @@ module.exports = function noDefineWithTheSameName(data, anylint){
 	var listOfExpressions = data.map(function(dataNode){
 		return {
 			filePath: dataNode.filePath,
-			expressions: anylint.datagrabbers.definitions(
+			expressions: anylint.datagrabbers.top_level_ast(
 				dataNode.ast,
-				anylint.filters.function,
-				anylint.extractors.function
+				anylint.filters.class_definition,
+				anylint.extractors.class_definition
 			)
 		};
 	});
