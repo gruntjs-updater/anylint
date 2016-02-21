@@ -30,14 +30,14 @@
         "esprima": "~1.0.4",
         "lodash": "~2.3.0"
     },
-    "peerDependencies":{
-        "grunt": "0.4.x"
+    "peerDependencies": {
+        "grunt": ">=0.4.0"
     },
     "devDependencies": {
         "grunt": "~0.4.2",
         "grunt-contrib-internal": "~0.4.6"
     },
-    "files":[
+    "files": [
         "tasks/*",
         "lib/**"
     ]
